@@ -1,20 +1,17 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {useRefresh} from 'react-tidy'
-import {useGet} from 'react-distant'
-import {Project} from '../types'
+import {useProjects} from '../hooks'
 
 export function ListProjects() {
-  const refresh = useRefresh()
-  const state = useGet<Project[]>('/projects')
+  const projects = useProjects()
   return (
     <>
       <div>
         <Link to="/projects/add">Add Project</Link>
       </div>
-      {!state.hasBeenLoaded && <div>Loading ...</div>}
-      {state.hasBeenLoaded &&
-        state.data?.map((project) => (
+      {!projects.hasBeenLoaded && <div>Loading ...</div>}
+      {projects.hasBeenLoaded &&
+        projects.data?.map((project) => (
           <section key={project.id}>
             <Link to={'/projects/' + project.id}>
               <h1>{project.name}</h1>

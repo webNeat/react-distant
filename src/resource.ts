@@ -4,28 +4,20 @@ import {AsyncFn} from './types'
 import {Store} from './classes'
 import {CacheContext} from './CacheProvider'
 
-export type ResourceOptions = {
+export type Options = {
   load: boolean
   reloadIfOlderThan: number
   clearCacheIfUnusedFor: number
 }
 
-let defaultOptions: ResourceOptions = {
+let defaultOptions: Options = {
   load: true,
   reloadIfOlderThan: 30000,
   clearCacheIfUnusedFor: 30000,
 }
 
-export function setDefaultResourceOptions(options: ResourceOptions) {
-  defaultOptions = {...defaultOptions, ...options}
-}
-
-export function resource<Args extends any[], T>(
-  fnKey: string,
-  fn: AsyncFn<Args, T>,
-  fnOptions: Partial<ResourceOptions> = {}
-) {
-  return (args: Args = [] as any, callOptions: Partial<ResourceOptions> = {}) => {
+export function resource<Args extends any[], T>(fnKey: string, fn: AsyncFn<Args, T>, fnOptions: Partial<Options> = {}) {
+  return (args: Args = [] as any, callOptions: Partial<Options> = {}) => {
     const key = JSON.stringify([fnKey, args])
     const options = {...defaultOptions, ...fnOptions, ...callOptions}
 

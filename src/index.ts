@@ -1,4 +1,3 @@
-export * from './useAxios'
-export * from './useAction'
-export * from './useResource'
-export * from './CacheProvider'
+export {action} from './action'
+export {resource} from './resource'
+export {CacheProvider} from './CacheProvider'

@@ -1,5 +1,5 @@
 import {renderHook, act, cleanup} from '@testing-library/react-hooks'
-import {resource} from './useResource'
+import {resource} from './resource'
 import {defaultCache} from './CacheProvider'
 
 describe('resource', () => {

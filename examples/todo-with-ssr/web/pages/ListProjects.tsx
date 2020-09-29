@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {useRefresh} from 'react-tidy'
-import {useGet} from '../../../../dist'
+import {useGet} from 'react-distant'
 import {Project} from '../types'
 
 export function ListProjects() {
@@ -12,7 +12,7 @@ export function ListProjects() {
       <div>
         <Link to="/projects/add">Add Project</Link>
       </div>
-      {/* {!state.hasBeenLoaded && <div>Loading ...</div>}
+      {!state.hasBeenLoaded && <div>Loading ...</div>}
       {state.hasBeenLoaded &&
         state.data?.map((project) => (
           <section key={project.id}>
@@ -21,7 +21,7 @@ export function ListProjects() {
             </Link>
             <p>{project.description}</p>
           </section>
-        ))} */}
+        ))}
     </>
   )
 }

@@ -1,6 +1,6 @@
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios'
 import {useAction} from './useAction'
-import {useResource, ResourceOptions} from './useResource'
+import {useResource, ResourceOptions} from './resource'
 
 type AxiosOptions = {
   axios: AxiosInstance

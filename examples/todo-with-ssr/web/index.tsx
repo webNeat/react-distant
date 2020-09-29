@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {App} from './App'
 import axios from 'axios'
-import {setAxiosInstance} from '../../../dist'
+import {setAxiosInstance} from 'react-distant'
 
 setAxiosInstance(
   axios.create({

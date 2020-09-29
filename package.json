@@ -1,0 +1,54 @@
+{
+  "name": "react-distant",
+  "version": "1.0.0-beta.2",
+  "description": "Handle remote state and actions the easy way",
+  "author": "Amine Ben hammou (@webNeat)",
+  "license": "MIT",
+  "repository": "webNeat/react-distant",
+  "homepage": "https://github.com/webNeat/react-distant#react-distant",
+  "main": "dist/index.js",
+  "module": "dist/react-distant.esm.js",
+  "types": "types/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --env=jsdom",
+    "test-coverage": "tsdx test --env=jsdom --coverage"
+  },
+  "peerDependencies": {
+    "react": ">=16.8",
+    "axios": "^0.20.0"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "bracketSpacing": false
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^7.24.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.2",
+    "@testing-library/react-hooks": "^3.4.1",
+    "@testing-library/user-event": "^12.1.4",
+    "@types/jest": "^26.0.13",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "axios": "^0.20.0",
+    "prettier": "^2.1.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1",
+    "tsdx": "^0.13.3",
+    "tslib": "^2.0.1",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "react-tidy": "^1.0.0"
+  }
+}

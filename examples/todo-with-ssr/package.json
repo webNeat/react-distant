@@ -1,0 +1,44 @@
+{
+  "name": "react-ssr-lab",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "server": "nodemon --watch server --watch dist server/index.js",
+    "web": "parcel web/index.tsx --out-file bundle.js"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "express": "^4.17.1",
+    "json-server": "^0.16.1",
+    "react-hook-form": "^6.8.4",
+    "react-router-dom": "^5.2.0",
+    "react-tidy": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-react": "^7.10.4",
+    "@types/axios": "^0.14.0",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "nodemon": "^2.0.4",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^2.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "typescript": "^4.0.3"
+  },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ],
+  "prettier": {
+    "semi": false,
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "bracketSpacing": false
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

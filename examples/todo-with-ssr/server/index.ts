@@ -2,11 +2,10 @@ import path from 'path'
 import React from 'react'
 import express from 'express'
 import bodyParser from 'body-parser'
-import ReactDOMServer from 'react-dom/server'
+import {serverRender} from 'react-distant'
 
 import api from './api'
 import {App} from '../web/App'
-import {CacheProvider, createCache} from 'react-distant'
 
 const app = express()
 
@@ -15,15 +14,7 @@ app.use('/api', bodyParser.json())
 app.use('/api', api)
 
 app.get('*', async (req, res) => {
-  console.log('Started!')
-  const cache = createCache()
-  ReactDOMServer.renderToString(React.createElement(CacheProvider, {value: cache}, React.createElement(App)))
-  console.log('Waiting!')
-  await cache.waitLoading()
-  console.log('Rendering!')
-  const html = ReactDOMServer.renderToString(
-    React.createElement(CacheProvider, {value: cache}, React.createElement(App))
-  )
+  const html = await serverRender(React.createElement(App))
   res.send(`
     <html lang="en">
       <head>

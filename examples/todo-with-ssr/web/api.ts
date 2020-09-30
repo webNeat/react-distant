@@ -1,14 +1,9 @@
 import axios from 'axios'
-import {Task} from './types'
+import {Task} from '../types'
 
-export async function list() {
+export async function all() {
   const res = await axios.get(`/api/tasks`)
   return res.data as Task[]
-}
-
-export async function get(id: number) {
-  const res = await axios.get(`/api/tasks/${id}`)
-  return res.data as Task
 }
 
 type AddFields = Omit<Task, 'id'>

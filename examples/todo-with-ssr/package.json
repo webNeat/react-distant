@@ -3,30 +3,36 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "server": "nodemon --watch server --watch dist server/index.js",
-    "web": "parcel web/index.tsx --out-file bundle.js"
+    "start": "concurrently npm:server npm:web:js npm:web:css",
+    "server": "nodemon --watch server --watch dist --exec \"npx ts-node server/index.ts\"",
+    "web:js": "parcel web/index.tsx --out-file bundle.js",
+    "web:css": "parcel web/style.css --out-file style.css"
   },
   "dependencies": {
     "axios": "^0.20.0",
+    "body-parser": "^1.19.0",
+    "classnames": "^2.2.6",
     "express": "^4.17.1",
-    "json-server": "^0.16.1",
-    "react-distant": "^1.0.0-beta.3",
-    "react-hook-form": "^6.8.4",
-    "react-router-dom": "^5.2.0",
+    "react-distant": "^1.0.0-beta.4",
     "react-tidy": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/preset-react": "^7.10.4",
     "@types/axios": "^0.14.0",
+    "@types/classnames": "^2.2.10",
+    "@types/express": "^4.17.8",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
+    "concurrently": "^5.3.0",
     "nodemon": "^2.0.4",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "tailwindcss": "^1.8.10",
+    "ts-node": "^9.0.0",
     "typescript": "^4.0.3"
   },
   "browserslist": [

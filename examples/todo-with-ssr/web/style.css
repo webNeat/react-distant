@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+.title {
+  @apply text-3xl font-bold mb-3;
+}
+
+.btn {
+  @apply block bg-blue-600 text-white rounded p-2 m-2;
+}
+
+.input {
+  @apply w-full m-3 border border-gray-300 bg-gray-100 rounded-lg px-4 py-2;
+}
+.input:focus {
+  @apply bg-white border-blue-500;
+}
+
+.warning {
+  @apply bg-red-200 text-red-900 border border-red-700 rounded-lg p-3 mb-3;
+}

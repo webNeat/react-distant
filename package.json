@@ -1,6 +1,6 @@
 {
   "name": "react-distant",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.6",
   "description": "Handle remote state and actions the easy way",
   "author": "Amine Ben hammou (@webNeat)",
   "license": "MIT",

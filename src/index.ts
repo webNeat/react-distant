@@ -1,3 +1,5 @@
+export {Cache} from './classes'
 export {action} from './action'
 export {resource} from './resource'
-export {createCache, CacheProvider} from './CacheProvider'
+export {serverRender} from './serverRender'
+export {CacheProvider} from './CacheProvider'

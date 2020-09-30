@@ -1,6 +1,5 @@
-import {StrMap} from '../types'
-import {wait} from '../functions'
 import {Store} from './Store'
+import {StrMap} from '../types'
 
 export class Cache {
   stores: StrMap<Store<any>> = {}
@@ -37,11 +36,7 @@ export class Cache {
   }
 
   async waitLoading() {
-    await wait(1)
-    while (true) {
-      const updates = await Promise.all(Object.values(this.stores).map((store) => store.wait()))
-      if (!updates.includes(true)) break
-      await wait(1)
-    }
+    const updates = await Promise.all(Object.values(this.stores).map((store) => store.wait()))
+    return updates.includes(true)
   }
 }

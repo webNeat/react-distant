@@ -23,19 +23,25 @@ export function resource<Args extends any[], T>(fnKey: string, fn: AsyncFn<Args,
 
     const refresh = useRefresh()
     const cache = React.useContext(CacheContext)
+    const initialize = () => {
+      const store = cache.get(key) as Store<T>
+      const state = store.get()
+      const isOld = state.timestamp < Date.now() - options.reloadIfOlderThan
+      if (options.load && !state.isLoading && (!state.hasBeenLoaded || isOld)) {
+        store.run(fn, args)
+      }
+    }
+
     if (!cache.has(key)) {
       cache.create(key)
+      initialize()
     }
     const store = cache.get(key) as Store<T>
 
     React.useEffect(() => {
       store.clearTimeout()
       store.addListener(refresh)
-      const state = store.get()
-      const isOld = state.timestamp < Date.now() - options.reloadIfOlderThan
-      if (options.load && !state.isLoading && (!state.hasBeenLoaded || isOld)) {
-        store.run(fn, args)
-      }
+      initialize()
       return () => {
         store.removeListener(refresh)
         if (!store.hasListeners()) {

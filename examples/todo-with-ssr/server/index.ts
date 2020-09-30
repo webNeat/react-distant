@@ -6,6 +6,7 @@ import ReactDOMServer from 'react-dom/server'
 
 import api from './api'
 import {App} from '../web/App'
+import {CacheProvider, createCache} from 'react-distant'
 
 const app = express()
 
@@ -13,8 +14,16 @@ app.use(express.static(path.join(__dirname, '../dist')))
 app.use('/api', bodyParser.json())
 app.use('/api', api)
 
-app.get('*', (req, res) => {
-  const html = ReactDOMServer.renderToString(React.createElement(App))
+app.get('*', async (req, res) => {
+  console.log('Started!')
+  const cache = createCache()
+  ReactDOMServer.renderToString(React.createElement(CacheProvider, {value: cache}, React.createElement(App)))
+  console.log('Waiting!')
+  await cache.waitLoading()
+  console.log('Rendering!')
+  const html = ReactDOMServer.renderToString(
+    React.createElement(CacheProvider, {value: cache}, React.createElement(App))
+  )
   res.send(`
     <html lang="en">
       <head>

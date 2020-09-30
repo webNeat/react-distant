@@ -13,7 +13,7 @@
     "body-parser": "^1.19.0",
     "classnames": "^2.2.6",
     "express": "^4.17.1",
-    "react-distant": "^1.0.0-beta.4",
+    "react-distant": "file:../..",
     "react-tidy": "^1.0.0"
   },
   "devDependencies": {

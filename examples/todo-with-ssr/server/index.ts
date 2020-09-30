@@ -14,7 +14,7 @@ app.use('/api', bodyParser.json())
 app.use('/api', api)
 
 app.get('*', async (req, res) => {
-  const html = await serverRender(React.createElement(App))
+  const [html, js] = await serverRender(React.createElement(App))
   res.send(`
     <html lang="en">
       <head>
@@ -25,6 +25,7 @@ app.get('*', async (req, res) => {
       </head>
       <body>
         <div id="app">${html}</div>
+        <script>${js}</script>
         <script src="/bundle.js"></script>
       </body>
     </html>

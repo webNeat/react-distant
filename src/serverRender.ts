@@ -12,5 +12,5 @@ export async function serverRender(element: React.ReactElement) {
   }
   const html = ReactDOMServer.renderToString(React.createElement(CacheProvider, {value: cache}, element))
   const data = cache.getData()
-  return `${html}<script>window.__REACT_DISTANT_DATA__=${JSON.stringify(data)}</script>`
+  return [html, `window.__REACT_DISTANT_DATA__=${JSON.stringify(data)}`]
 }

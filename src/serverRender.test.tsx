@@ -22,8 +22,8 @@ describe('serverRender', () => {
       const numbers = useNumbers()
       return <>{numbers.hasBeenLoaded && <p>{JSON.stringify(numbers.data)}</p>}</>
     }
-    const html = await serverRender(<App />)
-    expect(html).toContain('<p>[1,2,3,4,5]</p>')
+    const [html] = await serverRender(<App />)
+    expect(html).toBe('<p>[1,2,3,4,5]</p>')
   })
 
   test(`renders html with dependent resources`, async () => {
@@ -33,7 +33,7 @@ describe('serverRender', () => {
       const incremented = useIncrementAll([squares.data as number[]], {load: squares.hasBeenLoaded})
       return <>{incremented.hasBeenLoaded && <p>{JSON.stringify(incremented.data)}</p>}</>
     }
-    const html = await serverRender(<App />)
-    expect(html).toContain('<p>[2,5,10,17,26]</p>')
+    const [html] = await serverRender(<App />)
+    expect(html).toBe('<p>[2,5,10,17,26]</p>')
   })
 })
